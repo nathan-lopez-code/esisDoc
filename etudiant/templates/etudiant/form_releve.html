@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+  <div class="contact-us section" id="demande">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6  align-self-center">
+          <div class="section-heading">
+            <h6>Faite votre demande de {{ demande }}</h6>
+            <h2>Completez le formulaire partie(1)</h2>
+            <p>remplisser le formulaire a fin de pouvoir faire votre demande de document.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-us-content">
+            <form id="contact-form" method="post" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-12">
+                  <fieldset>
+                    {{ form.photo.label }}
+                    {{ form.photo }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.telephone }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.nom_postnom_pere }}
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.nom_postnom_pere }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.nom_postnom_mere }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="orange-button">Suivant</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

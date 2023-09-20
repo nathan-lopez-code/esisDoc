@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+{% load static %}
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>{% block titre %} {% endblock titre %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-scholar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 586 Scholar
+
+https://templatemo.com/tm-586-scholar
+
+-->
+  </head>
+
+<body>
+{% block body %}
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{% url 'etudiant_app:acceuil' %}" class="logo">
+                        <h1>EsisDoc</h1>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Serach Start ***** -->
+
+                    <!-- ***** Serach Start ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="{% url 'etudiant_app:acceuil' %}#top" class="active">Accueil</a></li>
+                      <li class="scroll-to-section"><a href="{% url 'etudiant_app:acceuil' %}#infos">infos</a></li>
+                      <li class="scroll-to-section"><a href="{% url 'etudiant_app:acceuil' %}#about">Apropos</a></li>
+                      <li class="scroll-to-section"><a href="{% url 'etudiant_app:acceuil' %}#demande">Demader</a></li>
+                      <li class="scroll-to-section"><a href="{% url 'etudiant_app:acceuil' %}#encours">Encours</a></li>
+                  </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-carousel owl-banner">
+            <div class="item item-1">
+              <div class="header-text">
+                <span class="category">Esis Doc</span>
+                <h2>Retrouvez toutes vos demandes de document academique</h2>
+                <p>Simplifiez vous la vie en utilisant esisDoc.</p>
+                <div class="buttons">
+                  <div class="main-button">
+                    <a href="{% url 'etudiant_app:acceuil' %}#demande">Effectuer une demande</a>
+                  </div>
+                  <div class="icon-button">
+                    <a href="{% url 'etudiant_app:acceuil' %}#about"><i class="fa fa-play"></i> Besoin d'aide?</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services section" id="infos">
+    <div class="container">
+      <div class="row">
+          {% if infos %}
+              <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="{% static 'assets/images/service-01.png' %}" alt="online degrees">
+            </div>
+            <div class="main-content">
+              <h4>Online Degrees</h4>
+              <p>Whenever you need free templates in HTML CSS, you just remember TemplateMo website.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% else %}
+            <div class="d-flex justify-content-center align-items-center accordion">
+                <h5 class="text-center">
+                    Retrouvez les informations concernant vos demandes sur cette section
+                </h5>
+            </div>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section about-us" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-1">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Qu'est-ce EsisDoc?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+                    <strong>EsisDoc</strong> est une platforme web reservez aux etudiants de l'esis .
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  A quoi sert EsisDoc?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                 Dans le souci de centraliser les différentes demandes  de document académique, nous avons créé esisdoc, vous pouvez donc y faire votre demande de document Académique à tout moment
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Qui peux utiliser EsisDoc?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                 Tout étudiant de l'esis peut utiliser esisdoc pour faire ses demandes
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Comment effectuer une demande?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Dans la section suivante ou dans le menu, sélectionner demander et après sélectionner le type de document que vous souhaitez avoir complété les formulaires qui y correspond . une fois votre demande traitée un message vous sera envoyé dans votre boite mail.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <div class="section-heading">
+            <h6>Apropos</h6>
+            <h2>l'equipe derriere ce projet</h2>
+            <p>Decouvrez l'equipe qui a travailler a la conception de EsisDoc.</p>
+            <div class="main-button">
+              <a href="{% url 'etudiant_app:team' %}">Discover team</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-us section" id="demande">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6  align-self-center">
+          <div class="section-heading">
+            <h6>Faite une demande de document ici</h6>
+            <h2>Simple et efficae</h2>
+            <p>Selectionnez tout d'abord le type de document que vous voulez avoir</p>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-us-content">
+            <form id="contact-form" action="" method="post">
+                {% csrf_token%}
+              <div class="row">
+                <div class="col-lg-12">
+                    {{ form.procedure }}
+                </div>
+                  <button type="submit" id="form-submit" class="orange-button mt-3">Etape suivant</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section events" id="encours">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-heading">
+            <h6>Vos demanades</h6>
+          </div>
+        </div>
+        {% if demande1 or demande2 %}
+          {% for d in demande1 %}
+            <div class="col-lg-12 col-md-6">
+                      <div class="item">
+                        <div class="row">
+                          <div classa="col-lg-3">
+                            <div class="image">
+                              <img src="{% static 'assets/images/event-03.jpg' %}" alt="image">
+                            </div>
+                          </div>
+                          <div class="col-lg-9">
+                            <ul>
+                             <li>
+                                <span class="category">Relve de cote</span>
+                              </li>
+                              <li>
+                                <span class="category">Releve de cote</span>
+                                <h4></h4>
+                              </li>
+                              <li>
+                                <span>Date:</span>
+                                <h6>{{ d.date_soumission }}</h6>
+                              </li>
+                              <li>
+                                <span>Staut:</span>
+                                <h6>{{ d.statut }}</h6>
+                              </li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+          {% endfor %}
+
+         {% for dd in demande2 %}
+             <div class="col-lg-12 col-md-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="image">
+                  <img src="{% static 'assets/images/event-02.jpg' %}" alt="image">
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <ul>
+                  <li>
+                    <span class="category">Demande de stage</span>
+                  </li>
+                  <li>
+                    <span>Date:</span>
+                    <h6>{{ dd.date_soumission }}</h6>
+                  </li>
+                  <li>
+                    <span>statut:</span>
+                    <h6>{{ dd.statut }}</h6>
+                  </li>
+                  <li>
+                    <span>entreprise:</span>
+                    <h6>{{ dd.entreprise }}</h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         {% endfor %}
+        {% else %}
+            <p class="text-center">Aucune demande n'a ete fait jusqu'a present</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+{% endblock body %}
+
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2036 EsisDoc. tout droit reserve. &nbsp;&nbsp;&nbsp; Design: <a href="{% url 'etudiant_app:team' %}" rel="nofollow" target="_blank">team</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+  <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'assets/js/counter.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+
+  </body>
+</html>

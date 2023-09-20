@@ -1,0 +1,145 @@
+{% extends "administration/base.html" %}
+
+
+
+{% block main_content %}
+
+     <main>
+                <div class="vs jj ttm vl ou">
+
+                    <!-- Page content -->
+                    <div class="uc na flex ak ttu ttf trn">
+
+                        <!-- Content -->
+                        <div>
+                            <div class="ro">
+                                <a class="text-sm gp text-indigo-500 xh" href="{% url "espace_administration:administration_dashboard" %}">&lt;- Revenir a l'acceuil</a>
+                            </div>
+                            <header class="ri">
+                                <!-- Title -->
+                                <h1 class="gu teu text-slate-800 font-bold ru">Devis : pour le Service {{ Service.nom_Service }}</h1>
+
+                            </header>
+
+                            <!-- Meta -->
+                            <div class="fw je jc jd jm rh">
+                                <!-- Author -->
+                                <div class="flex items-center _w">
+                                    <a class="block mr-2 ub" href="#0">
+                                        <img class="rounded-full cr cc st" src="{{ client.profile.url }}" width="32" height="32" alt="User 04">
+                                    </a>
+                                    <a class="block text-sm gh text-slate-800 lm" href="#0">
+                                        {{ client.first_name }} {{ client.last_name }}
+                                    </a>
+                                </div>
+                            </div>
+                            <hr class="nc co border-slate-200">
+                            <div>
+                                    <header class="go gv gq hp rounded-sm gh dx">Information sur le Service</header>
+
+                                    {% if Service.nom_Service == "Audit" %}
+                                        <ul class="nm">
+                                            <li class="flex vi">
+                                                <div class="op sv rounded-full ub ha ng ra">
+                                                    <svg class="op sv du yi" viewBox="0 0 36 36">
+                                                        <path d="M25 24H11a1 1 0 01-1-1v-5h2v4h12v-4h2v5a1 1 0 01-1 1zM14 13h8v2h-8z"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="uw flex items-center cs ch text-sm vr">
+                                                    <div class="uw flex fe">
+                                                        <div class="lo">Document comptable</div>
+                                                        <div class="ub ls nq">
+                                                            <a download class="gp text-indigo-500 xh" href="{{ Service.document_comptable.url }}">Telecharger<span class="hidden _z"> -&gt;</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    {% elif  Service.nom_Service == "Comptabilite" %}
+                                        <ul class="nm">
+                                            <li class="flex vi">
+                                                <div class="op sv rounded-full ub ha ng ra">
+                                                    <svg class="op sv du yi" viewBox="0 0 36 36">
+                                                        <path d="M25 24H11a1 1 0 01-1-1v-5h2v4h12v-4h2v5a1 1 0 01-1 1zM14 13h8v2h-8z"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="uw flex items-center cs ch text-sm vr">
+                                                    <div class="uw flex fe">
+                                                        <div class="lo">Document comptable</div>
+                                                        <div class="ub ls nq">
+                                                            <a download class="gp text-indigo-500 xh" href="{{ Service.document_comptable.url }}">Telecharger<span class="hidden _z"> -&gt;</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    {% elif  Service.nom_Service == "Fiscalite" %}
+                                        <ul class="nm">
+                                            <!-- Item -->
+                                            <li class="flex vi">
+                                                <div class="op sv rounded-full ub ho ng ra">
+                                                    <svg class="op sv du text-indigo-50" viewBox="0 0 36 36">
+                                                        <path d="M18 10c-4.4 0-8 3.1-8 7s3.6 7 8 7h.6l5.4 2v-4.4c1.2-1.2 2-2.8 2-4.6 0-3.9-3.6-7-8-7zm4 10.8v2.3L18.9 22H18c-3.3 0-6-2.2-6-5s2.7-5 6-5 6 2.2 6 5c0 2.2-2 3.8-2 3.8z"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="uw flex items-center cs ch text-sm vr">
+                                                    <div class="uw flex fe">
+                                                        <div class="lo"><strong>Chiffre d'affaire :</strong> {{ Service.chivre_affaire }}</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- Item -->
+                                            <li class="flex vi">
+                                                <div class="op sv rounded-full ub ha ng ra">
+                                                    <svg class="op sv du yi" viewBox="0 0 36 36">
+                                                        <path d="M25 24H11a1 1 0 01-1-1v-5h2v4h12v-4h2v5a1 1 0 01-1 1zM14 13h8v2h-8z"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="uw flex items-center cs ch text-sm vr">
+                                                    <div class="uw flex fe">
+                                                        <div class="lo">Liste des employees</div>
+                                                        <div class="ub ls nq">
+                                                            <a download class="gp text-indigo-500 xh" href="{{ Service.list_employes.url }}">Telecharger<span class="hidden _z"> -&gt;</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- Item -->
+                                        </ul>
+                                    {% else %}
+                                        <p>Aucune Service n'est lance</p>
+                                    {% endif %}
+
+                                </div>
+
+
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div>
+                            <div class="bg-white dz bd rounded-sm border border-slate-200 tez tny">
+                                <div class="text-sm text-slate-800 gh ro">Etablir devis</div>
+
+                                <div class="ri">
+                                    <form method="post">
+                                     {% csrf_token %}
+                                        {{ form.montant }}
+                                        <div style="height: 20px"></div>
+                                        {{ form.description }}
+                                       <div style="height: 20px"></div>
+
+                                    <button type="submit" class="btn ou ho xi ye" href="#0">Envoyer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </main>
+
+
+{% endblock main_content %}

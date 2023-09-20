@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+  <div class="contact-us section" id="demande">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6  align-self-center">
+            {% if parcours %}
+            <div class="section-heading">
+                <h6>Ajouter une autre promotions</h6>
+                <h2>Deja enregistrer</h2>
+
+                {% for p in parcours %}
+                    <div class="special-offer">
+                      <span class="offer"></span>
+                      <h6>promotion : <em> {{ p.promotion }}</em></h6>
+                      <h6>anneee : <em>{{ p.annee_academeique }}</em></h6>
+                      <h6>reussite : <em>{{ p.session_reussite }}</em></h6>
+                    </div>
+                {% endfor %}
+
+            </div>
+            {% else %}
+          <div class="section-heading">
+            <h6>Ajouter un parcous academique </h6>
+            <h2>Completez le formulaire</h2>
+            <p>Si vous ne fournissez aucune information concernant votre parcours academique le releve sera annule.</p>
+          </div>
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-us-content">
+            <form id="contact-form" action="" method="post">
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-12">
+                  <fieldset>
+                    {{ form.promotion.label }}
+                    {{ form.promotion }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.annee_academeique }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.session_reussite.label }}
+                     {{ form.session_reussite }}
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.filiere }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                     {{ form.session_defense }}
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset class="d-flex justify-content-between">
+                    <button type="submit" id="form-submit" class="orange-button">{% if parcours %}Enregistrer un autre{% else %}Enregistrer{% endif %}</button>
+                      {% if parcours %}
+                        <a href="{% url 'etudiant_app:acceuil' %}"  class="btn btn-success">Retourner a l'accueil</a>
+
+                      {% endif %}
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

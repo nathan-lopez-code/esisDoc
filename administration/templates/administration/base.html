@@ -1,0 +1,447 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Atam - Espace Administration</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href="{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <link href="{% static 'admin/css/vendors/flatpickr.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/style.css' %}" rel="stylesheet">
+
+</head>
+
+
+{% block body %}
+<body class="gs bs hi g_" :class="{ 'sidebar-expanded': sidebarExpanded }" x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }" x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
+
+    <script>
+        if (localStorage.getItem('sidebar-expanded') == 'true') {
+            document.querySelector('body').classList.add('sidebar-expanded');
+        } else {
+            document.querySelector('body').classList.remove('sidebar-expanded');
+        }
+    </script>
+
+    <!-- Page wrapper -->
+    <div class="flex ss la">
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Sidebar backdrop (mobile only) -->
+            <div class="m w bg-slate-900 pu tb tex ted bz wr" :class="sidebarOpen ? 'ba' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak=""></div>
+
+            <!-- Sidebar -->
+            <div id="sidebar" class="flex ak g tb x k tea tec teh tts ss lp tth l or tej ttz 2xl:!w-64 ub hs dw we wr wu" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false" @keydown.escape.window="sidebarOpen = false" x-cloak="lg">
+
+                <!-- Sidebar header -->
+                <div class="flex fe nx vq j_">
+                    <!-- Close button -->
+                    <button class="tex text-slate-500 xl" @click.stop="sidebarOpen = !sidebarOpen" aria-controls="sidebar" :aria-expanded="sidebarOpen">
+                        <span class="d">Close sidebar</span>
+                        <svg class="oi so du" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg' %}">
+                            <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z"></path>
+                        </svg>
+                    </button>
+                    <!-- Logo -->
+                    <a class="block" href="index-2.html">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <defs>
+                                <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
+                                    <stop stop-color="#A5B4FC" stop-opacity="0" offset="0%"></stop>
+                                    <stop stop-color="#A5B4FC" offset="100%"></stop>
+                                </linearGradient>
+                                <linearGradient x1="88.638%" y1="29.267%" x2="22.42%" y2="100%" id="logo-b">
+                                    <stop stop-color="#38BDF8" stop-opacity="0" offset="0%"></stop>
+                                    <stop stop-color="#38BDF8" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <rect fill="#6366F1" width="32" height="32" rx="16"></rect>
+                            <path d="M18.277.16C26.035 1.267 32 7.938 32 16c0 8.837-7.163 16-16 16a15.937 15.937 0 01-10.426-3.863L18.277.161z" fill="#4F46E5"></path>
+                            <path d="M7.404 2.503l18.339 26.19A15.93 15.93 0 0116 32C7.163 32 0 24.837 0 16 0 10.327 2.952 5.344 7.404 2.503z" fill="url(#logo-a)"></path>
+                            <path d="M2.223 24.14L29.777 7.86A15.926 15.926 0 0132 16c0 8.837-7.163 16-16 16-5.864 0-10.991-3.154-13.777-7.86z" fill="url(#logo-b)"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Links -->
+                <div class="ff">
+                    <!-- Pages group -->
+                    <div>
+                        <h3 class="go gv text-slate-500 gh vz">
+                            <span class="hidden tey ttq 2xl:hidden gn oi" aria-hidden="true">•••</span>
+                            <span class="tex ttj 2xl:block">Pages</span>
+                        </h3>
+                        <ul class="nk">
+                            <!-- Dashboard -->
+                            <li class="vn vr rounded-sm n_ ww bg-slate-900" x-data="{ open: true }">
+                                <a class="block gj ld wt wi" href="#0" @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
+                                    <div class="flex items-center fe">
+                                        <div class="flex items-center">
+                                            <svg class="ub so oi" viewBox="0 0 24 24">
+                                                <path class="du text-indigo-500" d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"></path>
+                                                <path class="du text-indigo-600" d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"></path>
+                                                <path class="du text-indigo-200" d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"></path>
+                                            </svg>
+                                            <span class="text-sm gp ml-3 ttw tnn 2xl:opacity--100 wr">Dashboard</span>
+                                        </div>
+                                        <!-- Icon -->
+                                        <div class="flex ub nq ttw tnn 2xl:opacity--100 wr">
+                                            <svg class="w-3 h-3 ub nz du gq" :class="open ? 'as' : 'ao'" viewBox="0 0 12 12">
+                                                <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="tex ttj 2xl:block">
+                                    <ul class="me re" :class="open ? '!block' : 'hidden'">
+                                        <li class="rt ww">
+                                            <a class="block text-indigo-500 wt wi ld" href="{% url 'administration_app:accueil' %}">
+                                                <span class="text-sm gp ttw tnn 2xl:opacity--100 wr">Accueil</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Expand / collapse button -->
+                <div class="mt hidden tew 2xl:hidden justify-end rn">
+                    <div class="vn vr">
+                        <button @click="sidebarExpanded = !sidebarExpanded">
+                            <span class="d">Expand / collapse sidebar</span>
+                            <svg class="oi so du _o" viewBox="0 0 24 24">
+                                <path class="gq" d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z"></path>
+                                <path class="g_" d="M3 23H1V1h2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Content area -->
+        <div class="y flex ak ug ll lc">
+
+            <!-- Site header -->
+            <header class="b k bg-white cs border-slate-200 tw">
+                <div class="vs jj ttm">
+                    <div class="flex items-center fe sa rr">
+
+                        <!-- Header: Left side -->
+                        <div class="flex">
+                            <!-- Hamburger button -->
+                            <button class="text-slate-500 hover--text-slate-600 tex" @click.stop="sidebarOpen = !sidebarOpen" aria-controls="sidebar" :aria-expanded="sidebarOpen">
+                                <span class="d">Open sidebar</span>
+                                <svg class="oi so du" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg' %}">
+                                    <rect x="4" y="5" width="16" height="2"></rect>
+                                    <rect x="4" y="11" width="16" height="2"></rect>
+                                    <rect x="4" y="17" width="16" height="2"></rect>
+                                </svg>
+                            </button>
+
+                        </div>
+
+                        <!-- Header: Right side -->
+                        <div class="flex items-center fl">
+
+                            <!-- Info button -->
+                            <div class="y inline-flex" x-data="{ open: false }">
+                                <button class="os sf flex items-center justify-center hi xt wt wi rounded-full" :class="{ 'hu': open }" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
+                                    <span class="d">Info</span>
+                                    <svg class="oo sl" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg' %}">
+                                        <path class="du text-slate-500" d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z"></path>
+                                    </svg>
+                                </button>
+                                <div class="uk tk g z q un bg-white border border-slate-200 va rounded bd la re" @click.outside="open = false" @keydown.escape.window="open = false" x-show="open" x-transition:enter="wt wa wr au" x-transition:enter-start="opacity-0 uq" x-transition:enter-end="ba uj" x-transition:leave="wt wa wr" x-transition:leave-start="ba" x-transition:leave-end="opacity-0" x-cloak="">
+                                    <div class="go gh gq gv mi ms vn">Need help?</div>
+                                    <ul>
+                                        <li>
+                                            <a class="gp text-sm text-indigo-500 xh flex items-center vf vn" href="#0" @click="open = false" @focus="open = true" @focusout="open = false">
+                                                <svg class="w-3 h-3 du text-indigo-300 ub mr-2" viewBox="0 0 12 12">
+                                                    <rect y="3" width="12" height="9" rx="1"></rect>
+                                                    <path d="M2 0h8v2H2z"></path>
+                                                </svg>
+                                                <span>Documentation</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="gp text-sm text-indigo-500 xh flex items-center vf vn" href="#0" @click="open = false" @focus="open = true" @focusout="open = false">
+                                                <svg class="w-3 h-3 du text-indigo-300 ub mr-2" viewBox="0 0 12 12">
+                                                    <path d="M10.5 0h-9A1.5 1.5 0 000 1.5v9A1.5 1.5 0 001.5 12h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 0zM10 7L8.207 5.207l-3 3-1.414-1.414 3-3L5 2h5v5z"></path>
+                                                </svg>
+                                                <span>Support Site</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="gp text-sm text-indigo-500 xh flex items-center vf vn" href="#0" @click="open = false" @focus="open = true" @focusout="open = false">
+                                                <svg class="w-3 h-3 du text-indigo-300 ub mr-2" viewBox="0 0 12 12">
+                                                    <path d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z"></path>
+                                                </svg>
+                                                <span>Contact us</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Divider -->
+                            <hr class="of so hu">
+
+                            <!-- User button -->
+                            <div class="y inline-flex" x-data="{ open: false }">
+                                <button class="inline-flex justify-center items-center kk" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
+                                    <img class="os sf rounded-full" src="{% static 'admin/images/user-avatar-32.png' %}" width="32" height="32" alt="User">
+                                    <div class="flex items-center ld">
+                                        <span class="ld nq text-sm gp kz"> {{ request.user.first_name }}</span>
+                                        <svg class="w-3 h-3 ub nz du gq" viewBox="0 0 12 12">
+                                            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="uk tk g z q un bg-white border border-slate-200 va rounded bd la re" @click.outside="open = false" @keydown.escape.window="open = false" x-show="open" x-transition:enter="wt wa wr au" x-transition:enter-start="opacity-0 uq" x-transition:enter-end="ba uj" x-transition:leave="wt wa wr" x-transition:leave-start="ba" x-transition:leave-end="opacity-0" x-cloak="">
+                                    <div class="mu ms vn rt cs border-slate-200">
+                                        <div class="gp text-slate-800">{{ request.user.first_name }}</div>
+                                        <div class="go text-slate-500 gm">Administrateur</div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                        </li>
+                                        <li>
+                                            <a class="gp text-sm text-indigo-500 xh flex items-center vf vn" href="" @click="open = false" @focus="open = true" @focusout="open = false">Deconnexion</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            {% block main_content %}
+            <main>
+                <div class="vs jj ttm vl ou uf na">
+
+                    <!-- Welcome banner -->
+                    <div class="y pr dw jk rounded-sm la rc">
+
+                        <!-- Background illustration -->
+                        <div class="g q k ip id pointer-events-none hidden tnh" aria-hidden="true">
+                            <svg width="319" height="198" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <defs>
+                                    <path id="welcome-a" d="M64 0l64 128-64-20-64 20z"></path>
+                                    <path id="welcome-e" d="M40 0l40 80-40-12.5L0 80z"></path>
+                                    <path id="welcome-g" d="M40 0l40 80-40-12.5L0 80z"></path>
+                                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="welcome-b">
+                                        <stop stop-color="#A5B4FC" offset="0%"></stop>
+                                        <stop stop-color="#818CF8" offset="100%"></stop>
+                                    </linearGradient>
+                                    <linearGradient x1="50%" y1="24.537%" x2="50%" y2="100%" id="welcome-c">
+                                        <stop stop-color="#4338CA" offset="0%"></stop>
+                                        <stop stop-color="#6366F1" stop-opacity="0" offset="100%"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <g fill="none" fill-rule="evenodd">
+                                    <g transform="rotate(64 36.592 105.604)">
+                                        <mask id="welcome-d" fill="#fff">
+                                            <use xlink:href="#welcome-a"></use>
+                                        </mask>
+                                        <use fill="url(#welcome-b)" xlink:href="#welcome-a"></use>
+                                        <path fill="url(#welcome-c)" mask="url(#welcome-d)" d="M64-24h80v152H64z"></path>
+                                    </g>
+                                    <g transform="rotate(-51 91.324 -105.372)">
+                                        <mask id="welcome-f" fill="#fff">
+                                            <use xlink:href="#welcome-e"></use>
+                                        </mask>
+                                        <use fill="url(#welcome-b)" xlink:href="#welcome-e"></use>
+                                        <path fill="url(#welcome-c)" mask="url(#welcome-f)" d="M40.333-15.147h50v95h-50z"></path>
+                                    </g>
+                                    <g transform="rotate(44 61.546 392.623)">
+                                        <mask id="welcome-h" fill="#fff">
+                                            <use xlink:href="#welcome-g"></use>
+                                        </mask>
+                                        <use fill="url(#welcome-b)" xlink:href="#welcome-g"></use>
+                                        <path fill="url(#welcome-c)" mask="url(#welcome-h)" d="M40.333-15.147h50v95h-50z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="y">
+                            <h1 class="gu teu text-slate-800 font-bold rt">Administration de ESISDOC </h1>
+                            <p>Genrez les differents demande de document </p>
+                        </div>
+
+                    </div>
+                    <!-- Cards -->
+                    <div class="sn ag fn">
+
+
+
+
+                        <!-- Table (Top Channels) -->
+                        <div class="w-100 tz  bg-white bd rounded-sm border border-slate-200">
+                            <header class="vc vu cs ch">
+                                <h2 class="gh text-slate-800">Les demandes lier au releves de cotes s'affichent ici</h2>
+                            </header>
+                            <div class="dk">
+
+                                <!-- Table -->
+                                <div class="lf">
+                                    {% if releve %}
+                                        <table class="ux ou">
+                                        <!-- Table header -->
+                                        <thead class="go gv gq hp rounded-sm">
+                                            <tr>
+                                                <th class="dx">
+                                                    <div class="gh gt">etudiant</div>
+                                                </th>
+
+                                                <th class="dx">
+                                                    <div class="gh gn">date</div>
+                                                </th>
+                                                <th class="dx">
+                                                    <div class="gh gn">infos</div>
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <!-- Table body -->
+                                        <tbody class="text-sm gp le ln">
+                                            <!-- Row -->
+                                            {% for d in releve %}
+
+                                                <tr>
+                                                    <td class="dx">
+                                                        <div class="flex items-center">
+                                                            <div class="text-slate-800">{{ d.etudiant.first_name }} {{ d.etudiant.last_name }} {{ d.etudiant.username }}</div>
+                                                        </div>
+                                                    </td>
+
+
+                                                    <td class="dx">
+                                                        <div class="gn">{{ d.date_soumission}}</div>
+                                                    </td>
+
+                                                    <td class="dx">
+                                                        <a class="gp text-indigo-500 xh" href="{{ d.get_absolute_url }}">Detail<span class="hidden _z"> -&gt;</span></a>
+                                                    </td>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    {% else  %}
+                                        <p class="text-center"> Aucune Service n'a ete demade pour le moment </p>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 tz  bg-white bd rounded-sm border border-slate-200">
+                            <header class="vc vu cs ch">
+                                <h2 class="gh text-slate-800">Les demande de stage s'affiche ici</h2>
+                            </header>
+                            <div class="dk">
+
+                                <!-- Table -->
+                                <div class="lf">
+                                    {% if stage %}
+                                        <table class="ux ou">
+                                        <!-- Table header -->
+                                        <thead class="go gv gq hp rounded-sm">
+                                            <tr>
+                                                <th class="dx">
+                                                    <div class="gh gt">etudiant</div>
+                                                </th>
+                                                <th class="dx">
+                                                    <div class="gh gn">Entreprise</div>
+                                                </th>
+                                                <th class="dx">
+                                                    <div class="gh gn">destinateur</div>
+                                                </th>
+                                                <th class="dx">
+                                                    <div class="gh gn">date</div>
+                                                </th>
+                                                <th class="dx">
+                                                    <div class="gh gn">detail</div>
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <!-- Table body -->
+                                        <tbody class="text-sm gp le ln">
+                                            <!-- Row -->
+                                            {% for d in stage %}
+
+                                                <tr>
+                                                    <td class="dx">
+                                                        <div class="flex items-center">
+                                                            <div class="text-slate-800">{{ d.etudiant.first_name }} {{ d.etudiant.last_name }} {{ d.etudiant.username }}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="dx">
+                                                        <div class="gn">{{ d.entreprise}}</div>
+                                                    </td>
+                                                     <td class="dx">
+                                                        <div class="gn">{{ d.destinateur}}</div>
+                                                    </td>
+
+
+                                                    <td class="dx">
+                                                        <div class="gn">{{ d.date_soumission}}</div>
+                                                    </td>
+
+                                                    <td class="dx">
+                                                        <a class="gp text-indigo-500 xh" href="{{ d.get_absolute_url }}">Detail<span class="hidden _z"> -&gt;</span></a>
+                                                    </td>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    {% else  %}
+                                        <p class="text-center"> Aucune Service n'a ete demade pour le moment </p>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </main>
+            {% endblock main_content %}
+        </div>
+
+    </div>
+
+    <script src="{%static 'admin/js/vendors/alpinejs.min.js' %}" defer=""></script>
+    <script src="{%static 'admin/js/vendors/chart.js' %}"></script>
+    <script src="{%static 'admin/js/vendors/moment.js' %}"></script>
+    <script src="{%static 'admin/js/vendors/chartjs-adapter-moment.js' %}"></script>
+    <script src="{%static 'admin/js/dashboard-charts.js' %}"></script>
+    <script src="{%static 'admin/js/vendors/flatpickr.js' %}"></script>
+    <script src="{%static 'admin/js/flatpickr-init.js' %}"></script>
+
+
+
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-125021779-1'></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-125021779-1', { 'anonymize_ip': true });</script><script>console.log("%cImportant!", "color: blue; font-size: x-large");console.log("%cThe page you are viewing is for demo purposes only. CSS and HTML have been minified and class names have been shortened to improve the page load time. Download our templates from https://cruip.com/ 😉", "font-size: large");</script><script>const pagesList = [{"name":"Dashboard","url":"https://preview.cruip.com/mosaic/index.html","active":true},{"name":"Analytics","url":"https://preview.cruip.com/mosaic/analytics.html","active":false},{"name":"Fintech","url":"https://preview.cruip.com/mosaic/fintech.html","active":false},{"name":"Customers","url":"https://preview.cruip.com/mosaic/customers.html","active":false},{"name":"Orders","url":"https://preview.cruip.com/mosaic/orders.html","active":false},{"name":"Invoices","url":"https://preview.cruip.com/mosaic/invoices.html","active":false},{"name":"Shop","url":"https://preview.cruip.com/mosaic/shop.html","active":false},{"name":"Shop 2","url":"https://preview.cruip.com/mosaic/shop-2.html","active":false},{"name":"Single Product","url":"https://preview.cruip.com/mosaic/product.html","active":false},{"name":"Cart","url":"https://preview.cruip.com/mosaic/cart.html","active":false},{"name":"Cart 2","url":"https://preview.cruip.com/mosaic/cart-2.html","active":false},{"name":"Cart 3","url":"https://preview.cruip.com/mosaic/cart-3.html","active":false},{"name":"Pay","url":"https://preview.cruip.com/mosaic/pay.html","active":false},{"name":"Campaigns","url":"https://preview.cruip.com/mosaic/campaigns.html","active":false},{"name":"Users Tabs","url":"https://preview.cruip.com/mosaic/users-tabs.html","active":false},{"name":"Users Tiles","url":"https://preview.cruip.com/mosaic/users-tiles.html","active":false},{"name":"Profile","url":"https://preview.cruip.com/mosaic/profile.html","active":false},{"name":"Feed","url":"https://preview.cruip.com/mosaic/feed.html","active":false},{"name":"Forum","url":"https://preview.cruip.com/mosaic/forum.html","active":false},{"name":"Forum Post","url":"https://preview.cruip.com/mosaic/forum-post.html","active":false},{"name":"Meetups","url":"https://preview.cruip.com/mosaic/meetups.html","active":false},{"name":"Meetups Post","url":"https://preview.cruip.com/mosaic/meetups-post.html","active":false},{"name":"Cards","url":"https://preview.cruip.com/mosaic/credit-cards.html","active":false},{"name":"Transactions","url":"https://preview.cruip.com/mosaic/transactions.html","active":false},{"name":"Transaction Details","url":"https://preview.cruip.com/mosaic/transaction-details.html","active":false},{"name":"Jobs Listing","url":"https://preview.cruip.com/mosaic/job-listing.html","active":false},{"name":"Jobs Post","url":"https://preview.cruip.com/mosaic/job-post.html","active":false},{"name":"Company Profile","url":"https://preview.cruip.com/mosaic/company-profile.html","active":false},{"name":"Kanban","url":"https://preview.cruip.com/mosaic/tasks-kanban.html","active":false},{"name":"Tasks List","url":"https://preview.cruip.com/mosaic/tasks-list.html","active":false},{"name":"Messages","url":"https://preview.cruip.com/mosaic/messages.html","active":false},{"name":"Inbox","url":"https://preview.cruip.com/mosaic/inbox.html","active":false},{"name":"Calendar","url":"https://preview.cruip.com/mosaic/calendar.html","active":false},{"name":"Applications","url":"https://preview.cruip.com/mosaic/applications.html","active":false},{"name":"My Account","url":"https://preview.cruip.com/mosaic/settings.html","active":false},{"name":"My Notifications","url":"https://preview.cruip.com/mosaic/notifications.html","active":false},{"name":"Connected Apps","url":"https://preview.cruip.com/mosaic/connected-apps.html","active":false},{"name":"Plans","url":"https://preview.cruip.com/mosaic/plans.html","active":false},{"name":"Billing & Invoices","url":"https://preview.cruip.com/mosaic/billing.html","active":false},{"name":"Give Feedback","url":"https://preview.cruip.com/mosaic/feedback.html","active":false},{"name":"Changelog","url":"https://preview.cruip.com/mosaic/changelog.html","active":false},{"name":"Roadmap","url":"https://preview.cruip.com/mosaic/roadmap.html","active":false},{"name":"FAQs","url":"https://preview.cruip.com/mosaic/faqs.html","active":false},{"name":"Empty State","url":"https://preview.cruip.com/mosaic/empty-state.html","active":false},{"name":"Page Not Found","url":"https://preview.cruip.com/mosaic/404.html","active":false},{"name":"Knowledge Base","url":"https://preview.cruip.com/mosaic/knowledge-base.html","active":false},{"name":"Sign in","url":"https://preview.cruip.com/mosaic/signin.html","active":false},{"name":"Sign up","url":"https://preview.cruip.com/mosaic/signup.html","active":false},{"name":"Reset password","url":"https://preview.cruip.com/mosaic/reset-password.html","active":false},{"name":"Onboarding 1","url":"https://preview.cruip.com/mosaic/onboarding-01.html","active":false},{"name":"Onboarding 2","url":"https://preview.cruip.com/mosaic/onboarding-02.html","active":false},{"name":"Onboarding 3","url":"https://preview.cruip.com/mosaic/onboarding-03.html","active":false},{"name":"Onboarding 4","url":"https://preview.cruip.com/mosaic/onboarding-04.html","active":false},{"name":"Button","url":"https://preview.cruip.com/mosaic/component-button.html","active":false},{"name":"Input Form","url":"https://preview.cruip.com/mosaic/component-form.html","active":false},{"name":"Dropdown","url":"https://preview.cruip.com/mosaic/component-dropdown.html","active":false},{"name":"Alert & Banner","url":"https://preview.cruip.com/mosaic/component-alert.html","active":false},{"name":"Modal","url":"https://preview.cruip.com/mosaic/component-modal.html","active":false},{"name":"Pagination","url":"https://preview.cruip.com/mosaic/component-pagination.html","active":false},{"name":"Tabs","url":"https://preview.cruip.com/mosaic/component-tabs.html","active":false},{"name":"Breadcrumb","url":"https://preview.cruip.com/mosaic/component-breadcrumb.html","active":false},{"name":"Badge","url":"https://preview.cruip.com/mosaic/component-badge.html","active":false},{"name":"Avatar","url":"https://preview.cruip.com/mosaic/component-avatar.html","active":false},{"name":"Tooltip","url":"https://preview.cruip.com/mosaic/component-tooltip.html","active":false},{"name":"Accordion","url":"https://preview.cruip.com/mosaic/component-accordion.html","active":false},{"name":"Icons","url":"https://preview.cruip.com/mosaic/component-icons.html","active":false}];if(window != top){window.parent.postMessage(pagesList, "https://cruip.com/")};</script></body>
+{% endblock body %}
+<!-- Mirrored from preview.cruip.com/mosaic/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Oct 2022 12:07:54 GMT -->
+</html>

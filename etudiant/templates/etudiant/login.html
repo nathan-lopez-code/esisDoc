@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block titre %} connexion {% endblock %}
+
+
+{% block body %}
+<body>
+  <div class="container" >
+
+    <div class="contact-us-content">
+
+      <form class="services section contact-form" action="{% url "etudiant_app:login" %}" method="POST" style="box-shadow: 0 0 15px 10px  rgba(0,0,0,0.7)">
+          {% csrf_token %}
+        <h4 class="text-center mb-3">Connexion</h4>
+        <div class="main-content" style="padding-left: 7%; padding-right: 7%; padding-bottom: 5%">
+           <div class="intro-code mb-5">        <p class="text-center">Bienvenu sur esisDoc, avant d'aller plus loin veillez confirmez que vous etes etudiant d'esis en vous connectant</p></div>
+          {{ form.email }}
+          <br>
+          {{ form.mot_de_passe }}
+          <div style="height: 30px"></div>
+          <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+          <input class="btn btn-success"  type="submit" value="se connecter"/>
+          <hr>
+          <div class="login-social-link centered">
+            <p>Vous avez oublier votre mot de passe? contacter l'administrateur <a href="">ici</a>  </p>
+          </div>
+         {% if message_erreur %}
+         <hr>
+         <div style="width: 100%; padding: 5px; background: #fa9a9a; color: black; border-radius: 1%">
+            {{ message_erreur }}
+         </div>
+         {% endif %}
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{%  static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="{% static 'client/lib/jquery.backstretch.min.js' %}"></script>
+  <script>
+    $.backstretch("{% static 'images/logo.jpeg' %}", {
+      speed: 500
+    });
+  </script>
+</body>
+
+{% endblock %}

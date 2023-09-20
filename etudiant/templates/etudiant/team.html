@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block titre %} Notre groupe {% endblock %}
+
+
+
+{% block body %}
+
+<header class="header-area header-sticky">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <nav class="main-nav">
+                <!-- ***** Logo Start ***** -->
+                <a href="{% url 'etudiant_app:acceuil' %}" class="logo">
+                    <h1>EsisDoc</h1>
+                </a>
+
+                <a class='menu-trigger'>
+                    <span>Presentation</span>
+                </a>
+                <!-- ***** Menu End ***** -->
+            </nav>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="team section" id="team">
+    <div class="container">
+      <div class="row">
+        {% for member in team %}
+        <div class="col-lg-3 col-md-6">
+          <div class="team-member">
+            <div class="main-content">
+              <img src="{% static 'assets/images/member-01.jpg' %}" alt="{{ member.name }}">
+              <span class="category">{{ member.profession }}</span>
+              <h4>{{ member.name }}</h4>
+              <ul class="social-icons">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
