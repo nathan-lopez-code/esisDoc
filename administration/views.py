@@ -41,7 +41,7 @@ def releveDetail(request, id):
             message = message
             email_from = settings.EMAIL_HOST_USER
             recipient_list = ["nathan.lopez.code@gmail.com", ]
-            #send_mail(subject, message, email_from, recipient_list, fail_silently=False,)
+            send_mail(subject, message, email_from, recipient_list)
 
     form = RapportForm()
 
@@ -56,4 +56,34 @@ def releveDetail(request, id):
 
 
 def StageDetail(request, id):
-    pass
+    stage = DemandeStage.objects.get(pk=id)
+    rapports = Rapport.objects.filter(destination=stage.etudiant)
+
+    if request.method == "POST":
+        form = RapportForm(request.POST)
+        if form.is_valid():
+            message = form.cleaned_data.get("message")
+            rapport_instance = Rapport(
+                destination=stage.etudiant,
+                message=message
+            )
+
+            rapport_instance.save()
+
+            # envoye le mail
+
+            subject = ''
+            message = message
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = ["nathan.lopez.code@gmail.com", ]
+            send_mail(subject, message, email_from, recipient_list)
+
+    form = RapportForm()
+
+    context = {
+        "stage": stage,
+        'rapports': Rapport.objects.filter(destination=stage.etudiant),
+        "form": form
+    }
+
+    return render(request, "administration/stage_detail.html", context)

@@ -141,9 +141,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "etudiant.Etudiant"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yourserver.com'
-EMAIL_USE_TLS = False
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'nathan.lopez.code@gmail.com'
-EMAIL_HOST_PASSWORD = """ print("google")/22 """
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

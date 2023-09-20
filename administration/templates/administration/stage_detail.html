@@ -20,41 +20,25 @@
                                 <span>Revenir a l'acceuil</span>
                             </a>
                         </div>
-                        <div class="text-sm text-slate-500 gm ru">Debuter le {{ releve.date_soumission }}</div>
+                        <div class="text-sm text-slate-500 gm ru">Debuter le {{ stage.date_soumission }}</div>
                         <header class="ri">
                             <!-- Title -->
-                            <h1 class="gu teu text-slate-800 font-bold">demande de releve de cote par l'etudiant {{ releve.etudiant.username }}</h1>
+                            <h1 class="gu teu text-slate-800 font-bold">demande de releve de cote par l'etudiant {{ stage.etudiant.username }}</h1>
                         </header>
 
                         <!-- Company information (mobile) -->
                         <div class="bg-white dz bd rounded-sm border border-slate-200 rh tex">
                             <div class="gn rh">
 
-                                <div class="ga font-bold text-slate-800 rt">{{ releve.etudiant.first_name }} {{ releve.etudiant.last_name }} {{ releve.etudiant.username }}</div>
-
-
-
-                                <div class="text-sm text-slate-500 gm">
-                                    <h5>Releve demandez </h5>
-                                    <ul class="nostyle">
-                                        {% for p in parcours %}
-                                            <li>
-                                                <p>promotion : {{ p.promotion}}</p>
-                                                <p>annee academique : {{ p.annee_academeique}}</p>
-                                                <p>session de reussite : {{p.session_reussite }}</p>
-                                            </li>
-                                        {% endfor %}
-
-                                    </ul>
-                                </div>
-                                <div class="text-sm text-slate-500 gm">Etat : {{ p.etat }}</div>
+                                <div class="ga font-bold text-slate-800 rt">{{ stage.etudiant.first_name }} {{ stage.etudiant.last_name }} {{ stage.etudiant.username }}</div>
+                                <hr>
+                                <div class="text-sm text-slate-500 gm">{{ stage.ville }}</div>
+                                <div class="text-sm text-slate-500 gm">{{ stage.entreprise }}</div>
+                                <div class="text-sm text-slate-500 gm">{{ stage.destinateur }}</div>
+                                <div class="text-sm text-slate-500 gm">Etat : {{ stage.etat }}</div>
                             </div>
                             <div class="fb">
-
-                                 {% if Service.encours == True %}  <button class="btn ou ho xi ye">Terminer le Service</button> {% else %}
-                                     <button class="btn ou border-slate-200 hover--border-slate-300 g_">Relancer la meme Service</button>
-
-                                  {% endif %}
+                                 <button class="btn ou border-slate-200 hover--border-slate-300 g_">Marquer comme terminer</button>
 
                             </div>
                         </div>
@@ -62,20 +46,6 @@
 
 
                         <!-- Tags -->
-                        <div class="rh">
-                            <div class="flex flex-wrap items-center -m-1">
-                                {% if Service.encours == True %}
-                                <div class="m-1">
-                                    <p class="go inline-flex gp hl text-indigo-600 rounded-full gn vp vf">Encours</p>
-                                </div>
-                                {% else %}
-                                <div class="m-1">
-                                    <p class="go inline-flex gp hl text-indigo-600 rounded-full gn vp vf" href="#0">Terminer</p>
-                                </div>
-                                {% endif %}
-
-                            </div>
-                        </div>
 
                         <hr class="nc co border-slate-200">
                         <div class="uw vs jj tei vu">
@@ -165,27 +135,14 @@
                                 <div class="inline-flex ro">
                                     <img class="ov sa rounded-full" src="{% static 'images/person.jpg' %}" width="64" height="64" alt="Company 01">
                                 </div>
-                                <div class="ga font-bold text-slate-800 rt">{{ releve.etudiant.first_name }} {{ releve.etudiant.last_name }} {{ releve.etudiant.username }}</div>
-
-                                <div class="text-sm text-slate-500 gm">
-                                    <h5>Releve demandez </h5>
-                                    <ul class="nostyle">
-                                        {% for p in parcours %}
-                                            <li>
-                                                <p class="text-right">promotion : {{ p.promotion}}</p>
-                                                <p class="text-right">annee academique : {{ p.annee_academeique}}</p>
-                                                <p class="text-right">session de reussite : {{p.session_reussite }}</p>
-                                            </li>
-                                            <hr>
-                                        {% endfor %}
-
-                                    </ul>
-                                </div>
-                                <div class="text-sm text-slate-500 gm">photo passeport : <a download href="{{ releve.photo.url }}"> telecharger</a></div>
-                                <div class="text-sm text-slate-500 gm">Etat : {{ releve.statut }}</div>
+                                 <div class="ga font-bold text-slate-800 rt">{{ stage.etudiant.first_name }} {{ stage.etudiant.last_name }} {{ stage.etudiant.username }}</div>
+                                <hr>
+                                <div class="text-sm text-slate-500 gm">{{ stage.ville }}</div>
+                                <div class="text-sm text-slate-500 gm">{{ stage.entreprise }}</div>
+                                <div class="text-sm text-slate-500 gm">{{ stage.destinateur }}</div>
+                                <div class="text-sm text-slate-500 gm">Etat : {{ stage.etat }}</div>
                             <div class="fb">
-
-                                     <button class="btn ou border-slate-200 hover--border-slate-300 g_">Marquer comme fini</button>
+                                <button class="btn ou border-slate-200 hover--border-slate-300 g_">Marquer comme fini</button>
                             </div>
                         </div>
 
