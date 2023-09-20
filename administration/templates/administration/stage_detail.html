@@ -1,0 +1,198 @@
+{% extends "administration/base.html" %}
+{% load static %}
+
+
+
+{% block main_content %}
+        <main>
+            <div class="vs jj ttm vl ou">
+
+                <!-- Page content -->
+                <div class="uc na flex ak ttu ttf trn">
+
+                    <!-- Content -->
+                    <div>
+                        <div class="rh">
+                            <a class="r vn bg-white border-slate-200 hover--border-slate-300 g_" href="{% url 'administration_app:accueil' %}">
+                                <svg class="du gq mr-2" width="7" height="12" viewBox="0 0 7 12">
+                                    <path d="M5.4.6 6.8 2l-4 4 4 4-1.4 1.4L0 6z"></path>
+                                </svg>
+                                <span>Revenir a l'acceuil</span>
+                            </a>
+                        </div>
+                        <div class="text-sm text-slate-500 gm ru">Debuter le {{ releve.date_soumission }}</div>
+                        <header class="ri">
+                            <!-- Title -->
+                            <h1 class="gu teu text-slate-800 font-bold">demande de releve de cote par l'etudiant {{ releve.etudiant.username }}</h1>
+                        </header>
+
+                        <!-- Company information (mobile) -->
+                        <div class="bg-white dz bd rounded-sm border border-slate-200 rh tex">
+                            <div class="gn rh">
+
+                                <div class="ga font-bold text-slate-800 rt">{{ releve.etudiant.first_name }} {{ releve.etudiant.last_name }} {{ releve.etudiant.username }}</div>
+
+
+
+                                <div class="text-sm text-slate-500 gm">
+                                    <h5>Releve demandez </h5>
+                                    <ul class="nostyle">
+                                        {% for p in parcours %}
+                                            <li>
+                                                <p>promotion : {{ p.promotion}}</p>
+                                                <p>annee academique : {{ p.annee_academeique}}</p>
+                                                <p>session de reussite : {{p.session_reussite }}</p>
+                                            </li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                                <div class="text-sm text-slate-500 gm">Etat : {{ p.etat }}</div>
+                            </div>
+                            <div class="fb">
+
+                                 {% if Service.encours == True %}  <button class="btn ou ho xi ye">Terminer le Service</button> {% else %}
+                                     <button class="btn ou border-slate-200 hover--border-slate-300 g_">Relancer la meme Service</button>
+
+                                  {% endif %}
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- Tags -->
+                        <div class="rh">
+                            <div class="flex flex-wrap items-center -m-1">
+                                {% if Service.encours == True %}
+                                <div class="m-1">
+                                    <p class="go inline-flex gp hl text-indigo-600 rounded-full gn vp vf">Encours</p>
+                                </div>
+                                {% else %}
+                                <div class="m-1">
+                                    <p class="go inline-flex gp hl text-indigo-600 rounded-full gn vp vf" href="#0">Terminer</p>
+                                </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <hr class="nc co border-slate-200">
+                        <div class="uw vs jj tei vu">
+
+                            <!-- Mail subject -->
+                            <header class="je jf jd ri">
+                                <h1 class="gf gb text-slate-800 font-bold rt _y nq">Envoyer un mail a l'etudiant</h1>
+                                <button class="go inline-flex gp hh yc rounded-full gn vp vf lm"></button>
+                            </header>
+
+                            <!-- Messages box -->
+                            <div class="bg-white bd rounded-sm border border-slate-200 vm le lr">
+
+                                {% if rapports %}
+                                    {% for rapport in rapports %}
+                                        <div class="vh" x-data="{ open: true }">
+                                         <!-- Header -->
+                                        <header class="flex aj">
+                                            <!-- Avatar -->
+                                            <img class="rounded-full ub ra" src="{% static 'images/person.jpg' %}" width="40" height="40" alt="User 11">
+                                            <!-- Meta -->
+                                            <div class="uw">
+                                                <div class="je aj fe n_">
+                                                    <!-- Message author -->
+                                                    <div class="tnp items-center ru _y">
+                                                        <button class="text-sm gh text-slate-800 gt ld" @click.prevent="open = !open"></button>
+                                                        <div class="text-sm gq hidden tnh nl" x-show="open" x-cloak="">·</div>
+                                                        <div class="go" x-show="open" x-cloak="">{{ rapport.destination.usernane }}</div>
+                                                    </div>
+                                                    <!-- Date -->
+                                                    <div class="go gp text-slate-500 lm ru _y">{{ rapport.date }}</div>
+                                                </div>
+                                                <!-- To -->
+                                                <div class="go gp text-slate-500" x-show="open" x-cloak="">Admin EsisDoc</div>
+                                            </div>
+                                        </header>
+                                        <!-- Body -->
+                                        <div class="text-sm text-slate-800 io fb" x-show="open" x-cloak="">
+                                            <p>{{ rapport.message }}</p>
+
+                                        </div>
+                                </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="vh">Aucun rapport envoyer </div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="b te">
+                            <div class="flex items-center fe bg-white co border-slate-200 vs jj tei sa">
+                                <!-- Plus button -->
+                                <button id="buttonFile" class="ub gq xv ra" >
+                                    <span class="d">Add</span>
+                                    <svg class="oi so du" viewBox="0 0 24 24">
+                                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12C23.98 5.38 18.62.02 12 0zm6 13h-5v5h-2v-5H6v-2h5V6h2v5h5v2z"></path>
+                                    </svg>
+                                </button>
+                                <script>
+                                    let btn = document.getElementById("buttonFile");
+                                    btn.addEventListener("click", ()=>{
+                                        document.getElementsByName("fichier")[0].click();
+                                    })
+                                </script>
+                                <!-- Message input -->
+                                <form method="post"  enctype="multipart/form-data" class="uw flex">
+                                    {% csrf_token %}
+                                    <div class="uw ra">
+                                        {{ form.message }}
+                                    </div>
+                                    <button type="submit" class="btn ho xi ye lm">Envoyer -&gt;</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="hidden tey fg">
+
+                        <!-- Company information (desktop) -->
+                        <div class="bg-white dz bd rounded-sm border border-slate-200 tez tny">
+                            <div class="gn rh">
+                                <div class="inline-flex ro">
+                                    <img class="ov sa rounded-full" src="{% static 'images/person.jpg' %}" width="64" height="64" alt="Company 01">
+                                </div>
+                                <div class="ga font-bold text-slate-800 rt">{{ releve.etudiant.first_name }} {{ releve.etudiant.last_name }} {{ releve.etudiant.username }}</div>
+
+                                <div class="text-sm text-slate-500 gm">
+                                    <h5>Releve demandez </h5>
+                                    <ul class="nostyle">
+                                        {% for p in parcours %}
+                                            <li>
+                                                <p class="text-right">promotion : {{ p.promotion}}</p>
+                                                <p class="text-right">annee academique : {{ p.annee_academeique}}</p>
+                                                <p class="text-right">session de reussite : {{p.session_reussite }}</p>
+                                            </li>
+                                            <hr>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                                <div class="text-sm text-slate-500 gm">photo passeport : <a download href="{{ releve.photo.url }}"> telecharger</a></div>
+                                <div class="text-sm text-slate-500 gm">Etat : {{ releve.statut }}</div>
+                            <div class="fb">
+
+                                     <button class="btn ou border-slate-200 hover--border-slate-300 g_">Marquer comme fini</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+{% endblock %}
